@@ -8,7 +8,6 @@ class Main {
 
   constructor() {
 
-
     console.log("Initialize ready");
 
     this.ninja = document.createElement("div");

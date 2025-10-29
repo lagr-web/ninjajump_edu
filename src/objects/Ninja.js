@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import gsap from "gsap";
+import { Howl } from "howler";
 
 class Ninja {
   constructor(world, obj = {}) {
@@ -9,7 +10,6 @@ class Ninja {
       scale: [0.4, 0.4, 0.4],
       position: [0.1, 0.55, 3.5],
       rotationY: 0.3,
-      sound:""
     }
     const settings = { ...defaults, ...obj };
     const [xScale, yScale, zScale] = settings.scale;
@@ -17,6 +17,12 @@ class Ninja {
     const rotationy = settings.rotationY;
 
     this.jumpFinished = true;
+
+      this.jumpNinjaSound = new Howl({
+      src: ['..//../assets/juhu.mp3']
+    });
+
+    
 
     // ✅ Lav loader UI
     const ninjaLoader = document.createElement("div");
