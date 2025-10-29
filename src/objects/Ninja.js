@@ -5,24 +5,28 @@ import { Howl } from "howler";
 
 class Ninja {
   constructor(world, obj = {}) {
+
     const defaults = {
+      
       model: "/assets/little.glb",  // brug absolut sti
       scale: [0.4, 0.4, 0.4],
       position: [0.1, 0.55, 3.5],
       rotationY: 0.3,
-    }
+      sound:""
+    };
     const settings = { ...defaults, ...obj };
+
+    console.log(settings.sound);
+    
     const [xScale, yScale, zScale] = settings.scale;
     const [xPos, yPos, zPos] = settings.position;
     const rotationy = settings.rotationY;
 
     this.jumpFinished = true;
 
-      this.jumpNinjaSound = new Howl({
-      src: ['..//../assets/juhu.mp3']
+    this.jumpNinjaSound = new Howl({
+      src: ['../../assets/' + settings.sound ]
     });
-
-    
 
     // ✅ Lav loader UI
     const ninjaLoader = document.createElement("div");
@@ -98,8 +102,12 @@ class Ninja {
   }
 
   jump() {
+
     if (this.jumpFinished) {
+
       if (this.actionJump) this.actionJump.reset();
+
+        this.jumpNinjaSound.play();
 
       const clipJump = THREE.AnimationClip.findByName(this.clips, "jump");
       this.actionJump = this.mixer.clipAction(clipJump);
