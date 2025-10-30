@@ -8,7 +8,7 @@ class Main {
 
   constructor() {
 
-    console.log("Initialize ready");
+     console.log("Initialize ready");
 
     this.ninja = document.createElement("div");
     this.ninja.id = "ninja";
@@ -17,6 +17,7 @@ class Main {
     let ninjaImg = document.createElement("img");
     ninjaImg.src = "./assets/ninja.png";
     this.ninja.appendChild(ninjaImg);
+    
 
   } //end constructor
 } //end class

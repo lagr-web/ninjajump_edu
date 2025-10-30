@@ -6,8 +6,6 @@ class Props{
 
     constructor(world,obj =  {}){
 
-        console.log(obj);
-
          const defaults = {
       model: "../../assets/stone.glb",
       scale: [0.4, 0.4, 0.4],

@@ -15,8 +15,6 @@ class Ninja {
       sound:""
     };
     const settings = { ...defaults, ...obj };
-
-    console.log(settings.sound);
     
     const [xScale, yScale, zScale] = settings.scale;
     const [xPos, yPos, zPos] = settings.position;
@@ -24,9 +22,11 @@ class Ninja {
 
     this.jumpFinished = true;
 
+    if(settings.sound != ""){
     this.jumpNinjaSound = new Howl({
       src: ['../../assets/' + settings.sound ]
     });
+    }
 
     // ✅ Lav loader UI
     const ninjaLoader = document.createElement("div");
@@ -107,7 +107,7 @@ class Ninja {
 
       if (this.actionJump) this.actionJump.reset();
 
-        this.jumpNinjaSound.play();
+         if (this.jumpNinjaSound) this.jumpNinjaSound.play();
 
       const clipJump = THREE.AnimationClip.findByName(this.clips, "jump");
       this.actionJump = this.mixer.clipAction(clipJump);
