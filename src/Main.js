@@ -15,7 +15,7 @@ class Main {
     document.body.appendChild(this.ninja);
 
     let ninjaImg = document.createElement("img");
-    ninjaImg.src = "./assets/ninja.png";
+    ninjaImg.src = "./assets/ninja_3d_yellow_env.jpg";
     this.ninja.appendChild(ninjaImg);
     
 
