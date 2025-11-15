@@ -40,11 +40,11 @@ position: absolute;
   top:50%;
 
  border: .9vw solid white;
-width: 80%; /* fylder 80% af forælderen */
-  max-width: 500px; /* evt max størrelse */
+//width: 80%; /* fylder 80% af forælderen */
+ // max-width: 500px; /* evt max størrelse */
   aspect-ratio: 16 / 9; /* Holder altid 16:9 format */
   overflow: hidden;
-transform: translate(-50%, -50%) rotate(4deg);
+transform: translate(-50%, -50%) rotate(-4deg);
   transform-origin: center;
 -webkit-box-shadow: 1px 2px 9px 1px rgba(0,0,0,0.48); 
 box-shadow: 1px 2px 9px 1px rgba(0,0,0,0.48);
