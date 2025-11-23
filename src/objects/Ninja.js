@@ -14,6 +14,7 @@ class Ninja {
       rotationY: 0.3,
       sound:""
     };
+
     const settings = { ...defaults, ...obj };
     
     const [xScale, yScale, zScale] = settings.scale;
@@ -21,11 +22,14 @@ class Ninja {
     const rotationy = settings.rotationY;
 
     this.jumpFinished = true;
+    this.ready = false;
 
     if(settings.sound != ""){
+
     this.jumpNinjaSound = new Howl({
       src: ['../../assets/' + settings.sound ]
     });
+
     }
 
     // ✅ Lav loader UI
@@ -47,6 +51,7 @@ class Ninja {
           duration: 0.5,
           onComplete: () => document.getElementById("loader-container").remove(),
         });
+        this.ready = true;
       },
       // onProgress
       (url, itemsLoaded, itemsTotal) => {
@@ -103,13 +108,15 @@ class Ninja {
 
   jump() {
 
-    if (this.jumpFinished) {
+      if (this.jumpFinished && this.ready) {
 
       if (this.actionJump) this.actionJump.reset();
 
-         if (this.jumpNinjaSound) this.jumpNinjaSound.play();
+      if (this.jumpNinjaSound) this.jumpNinjaSound.play();
 
       const clipJump = THREE.AnimationClip.findByName(this.clips, "jump");
+
+      if (!clipJump) return console.warn("Jump animation not found");
       this.actionJump = this.mixer.clipAction(clipJump);
       this.actionJump.setLoop(THREE.LoopOnce);
       this.actionJump.play();
